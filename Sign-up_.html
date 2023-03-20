@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sign-up</h2>
+
+    <label>FirstName</label>
+    <input type="text" id="f_name"  required> <br>
+
+    <label>LastName</label>
+    <input type="text" id="L_name" required> <br>
+
+    <label>Mobile Number</label>
+    <input type="number" id="number" max="10" required> <br>
+    <p><b id="num"></b></p>
+
+    <label>E-mail</label>
+    <input type="email" id="email" required> <br>
+    <p><b id="em"></b></p>
+
+    <label>Password</label>
+    <input type="password" id="password" required> <br>
+
+    <p>Already have an account then Please <a href="Log_in.html">Login</a></p>
+    <input type="submit" onclick="hello()">
+    <p id="sam"></p>
+</body>
+
+</html>
+<script>
+    document.getElementById("num").style.display = "none";
+    document.getElementById("em").style.display = "none";
+    function hello(){
+        var f_name,L_name,number,email,password;
+
+        f_name = document.getElementById("f_name").value,
+        L_name = document.getElementById("L_name").value,
+        number = document.getElementById("number").value,
+        email = document.getElementById("email").value,
+        password = document.getElementById("password").value
+
+        if((f_name,L_name,number,email,password) !== ''){
+            // document.getElementById("f_name").style.borderColor = "black";
+            // document.getElementById("L_name").style.borderColor = "black";
+            Sign();
+        }
+        else{
+            alert("Please Fill all the Fields")
+        }
+    }
+    function Sign() {
+
+        // 1st method Error
+        // let obj = {
+        //     f_name: document.getElementById("f_name").value,
+        //     L_name: document.getElementById("L_name").value,
+        //     number: document.getElementById("number").value,
+        //     email: document.getElementById("email").value,
+        //     password: document.getElementById("password").value
+        // }
+
+
+        // let arry = [];
+        // arry.push(obj)
+
+        // let data = JSON.parse(localStorage.getItem("user"))
+        // let newarry = [...arry,data]
+        // newarry = [newarry]
+        // localStorage.setItem("user",JSON.stringify(newarry))
+        
+        
+
+
+
+
+        //2nd method
+        let f_name,L_name,number,email,password;
+
+        f_name = document.getElementById("f_name").value,
+        L_name = document.getElementById("L_name").value,
+        number = document.getElementById("number").value,
+        email = document.getElementById("email").value,
+        password = document.getElementById("password").value
+
+        let arry = [];
+        arry = JSON.parse(localStorage.getItem("user"))?JSON.parse(localStorage.getItem("user")):[]
+        // console.log(arry);
+
+        var arr_email = [];
+        var arr_pwd = [];
+
+        for(i=0; i<arry.length; i++){
+            var store_mail = arry[i].email;
+            arr_email.push(store_mail);
+
+            var store_pwd = arry[i].password;
+            arr_pwd.push(store_pwd);
+        }
+        // console.log(arr_email,"email");
+        // console.log(arr_pwd,"pwd");
+
+        let filter_mail = "";
+        filter_mail = arr_email.filter((aa)=>{
+            if(email == aa){
+                return 1;
+            }
+        });
+        let filter_pwd = "";
+        filter_pwd = arr_pwd.filter((bb)=>{
+            if(password == bb){
+                return 1;
+            }
+        });
+
+        let check_email = email.includes("@");
+        // let check_pwd1 = password.includes("@");
+        // let check_pwd2 = password.includes("#");
+        // let check_pwd3 = password.includes("$");
+        // console.log(check_pwd1);
+        // console.log(check_pwd2);
+        // console.log(check_pwd3);
+        
+        if(number.length > 10 || number.length < 10 ){
+            document.getElementById("num").style.display = "block";
+            document.getElementById("number").style.borderColor = "red";
+            document.getElementById("num").innerHTML = "Please Enter a valid number";
+        }
+        
+        else if(check_email == false ){
+            document.getElementById("em").style.display = "block";
+            document.getElementById("email").style.borderColor = "red";
+            document.getElementById("em").innerHTML = "Please Enter a valid Mail";
+        }
+
+        // else if((check_pwd1,check_pwd2,check_pwd3) === false){
+        //     alert("Use Special Character like @,#,$")
+        // }
+
+        else if(email === filter_mail[0] || password === filter_pwd[0]){
+            document.getElementById("sam").innerHTML = 'you have been sign-up earlier with this credential';
+        }
+        else{
+            arry.push({
+                "f_name":f_name,"L_name":L_name,"number":number,"email":email,"password":password
+            })
+            localStorage.setItem("user",JSON.stringify(arry));
+            document.getElementById("sam").innerHTML = 'Sign-up Done';
+            // window.location.href = "open.html";
+            // location.replace("open.html")
+            
+        }
+        // console.log(filter_pwd,"pwd");
+        // console.log(filter_mail,"mail");
+
+
+
+        
+
+
+        
+        
+
+        
+        
+        
+        
+            
+        
+        
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Rough
+
+        // console.log(data);
+
+        // console.log(store_obj,"objval");
+        // var key = JSON.stringify(obj)
+        // var [key] = key
+        // // console.log([...key]);
+        // localStorage.setItem("key",JSON.stringify(obj1));
+
+        // let data = [store_obj,newval]
+        // console.log(data,'data');
+        // localStorage.setItem("key",JSON.stringify([...store_obj,]));
+
+        // let myval = localStorage.setItem("key")
+
+        // var ww = JSON.parse(localStorage.getItem("key"));
+        // var [...www] = ww;
+        // console.log(www);
+        // console.log(obj);
+        // obj.push(obj1);
+        // localStorage.setItem("obj1",JSON.stringify(obj1))
+
+        // let newval= [...obj,obj1]
+
+
+
+
+
+        // // i++;
+        // // console.log(obj[0].FirstName)
+
+        // var store1 = JSON.stringify(obj)
+        // localStorage.setItem("store1", store1)
+        // // var pp = localStorage.getItem("store1")
+        // // var spread = JSON.parse(pp)
+        // // console.log(uu[0].password);
+        // var spread1 = [...spread];
+        // console.log(spread1); 
+        // // console.log(obj);
+        // aa = spread1+obj;
+        // qq = JSON.stringify(aa)
+        // // console.log(qq);
+
+        // localStorage.setItem("store1", store1)
+
+
+
+
+
+
+        // var [...uu1] = uu;
+        // var tt = localStorage.removeItem("store1");
+        // console.log(tt);
+        // var add = [...uu1]+obj
+        // console.log(add)
+        // var store = JSON.stringify(add)
+        // localStorage.setItem("store", store);
+        // console.log(store1);
+    }
+</script>
+
+<!-- [{},{},{}] -->

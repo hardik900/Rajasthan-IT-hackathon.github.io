@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEC Furniture</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .main-container{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .left-container{
+            width:50%;
+            height: 100vh;
+            /* height: 100%; */
+            /* background-color: aqua; */
+            border-right: 2px solid white;
+            transition: 3s all ease-in-out;
+            /* background-color: aqua; */
+            /* opacity: .9s; */
+            /* overflow:auto; */
+        }
+        .right-container{
+            width:50%;
+            height: 100vh;
+            /* height: 100%; */
+            /* background-color: aqua; */
+            /* border-right: 2px solid white; */
+            
+        }
+        .left-container::before{
+            content: "";
+            background: url('student.jpg');
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: .8;
+            height: 100vh;
+            top: 0px;
+            /* right: 0px; */
+            left: 0px;
+            bottom: 0px;
+            width: 50%;
+            z-index: -1;
+        }
+        .right-container::before{
+            content: "";
+            background: url('Institute.jpg');
+            position: absolute;
+            background-repeat: no-repeat;
+            opacity: .7;
+            background-size: cover;
+            height: 100vh;
+            width: 50%;
+            z-index: -1;
+            top: 0px;
+            left: px;
+            bottom: 0px;
+            transition: 2s all ease-in-out;
+        }
+        .right-container::before:hover{
+            transform: translateX(-90px);
+        }
+        .left-container img{
+            width:100%;
+            height: 100%;
+            
+        }
+        .right-container img{
+            width:100%;
+            height: 100%;
+        }
+        .student:hover{
+            transform: translateX(-90px);
+        }
+        
+        .Institute:hover{
+            transform: translateX(90px)
+        }
+
+        .student{
+            display: flex;
+            flex-direction: column;
+            justify-content: center ;
+            float: right;
+            align-items: center ;
+            transition: 700ms  all ease-in-out;
+            height: 95vh;
+            width: 650px;
+            /* background: url("Home.png"); */
+            /* background-color: brown; */
+        }
+        .student p{
+            margin: 15px 0px;
+            color: white;
+        }
+        .student span{
+            margin: 15px 0px;
+            border :2px solid white;
+            padding: 5px 15px;
+            color: white;
+        }
+
+        .Institute{
+            display: flex;
+            flex-direction: column;
+            justify-content: center ;
+            align-items: flex-start ;
+            transition: 700ms  all ease-in-out;
+            height: 95vh;
+            width: 458px;
+            /* background: url("office.jpg") ; */
+            /* background-color: aqua; */
+            /* float: right; */
+        }
+        .Institute p{
+            margin: 8px 0px;
+            color: white;
+        }
+        .Institute span{
+            margin: 1px 0px;
+            border :2px solid white;
+            padding: 5px 15px;
+            color: white;
+        }
+
+        .student-1{
+            width: 600px;
+            margin-right: -700px;
+            /* background-color: blue; */
+        }
+
+        .Institute-1{
+            width: 270px;
+            /* background-color:red; */
+        }
+        #ps{
+            visibility: hidden;
+        }
+        #sp{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body style="overflow: auto;">
+    <div class="main-container">
+        <div class="left-container">
+            <div>
+                <!-- <h4>Hello</h4> -->
+            </div>
+            <div class="student" onmouseover="myHome()" onmouseout="myHome1()">
+                <div class="student-1" >
+                    <h1>Student</h1>
+                    <div style="width: 90%; height: 2px; background-color: white;"></div>
+                    <!-- <hr> -->
+                    <div id="ps">
+                        <p>Future of the Country</p>
+                        <a href="MCQ.html" style="color:white; text-decoration: none;"><span>Explore</span></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="Institute" onmouseover="myoffice()" onmouseout="myoffice1()">
+                <div class="Institute-1">
+                    <h1 style="text-align:right; display: block;">Institute</h1> 
+                    <div style="float: right; width: 100%; display: block;height: 2px; background-color: white;"></div>
+                    <!-- <hr> -->
+                    <div id="sp">
+                        <p style="text-align:right;">We are here to make your future</p>
+                        <span style=" float: right;">Explore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    function myHome(){
+        document.getElementById('ps').style.visibility="visible";
+        document.getElementById("ps").style.transition = "all ease-in 10ms";
+    }
+    function myHome1(){
+        document.getElementById('ps').style.visibility="hidden";
+        document.getElementById("ps").style.transition = "all ease-out 600ms";
+    }
+
+    function myoffice(){
+        document.getElementById('sp').style.visibility="visible";
+        document.getElementById("sp").style.transition = "all ease-in 10ms";
+    }
+    function myoffice1(){
+        document.getElementById('sp').style.visibility="hidden";
+        document.getElementById("sp").style.transition = "all ease-out 600ms";
+    }
+
+</script>
